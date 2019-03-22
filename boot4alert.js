@@ -59,8 +59,8 @@ function Initial(msg, btnMsg) {
 
   if (msg.title != undefined && dialog.find(".modal-header").length == 0) {
     body.before(modalTemplate.header);
-    dialog.find(".modal-header").html(msg.title + modalTemplate.closeButton);
   }
+  dialog.find(".modal-header").html(msg.title + modalTemplate.closeButton);
 
   if (msg.style != undefined) {
     dialog.find(".modal-header").css(msg.style);
@@ -68,13 +68,14 @@ function Initial(msg, btnMsg) {
 
   if (dialog.find(".btn-primary").length == 0) {
     body.after(modalTemplate.footer);
-    if (msg.confirmBox != undefined) {
-      dialog.find(".modal-footer").html(modalTemplate.buttonConfirm);
-    } else {
-      dialog.find(".modal-footer").html(modalTemplate.button);
-      dialog.find(".btn").html(btnMsg);
-    }
   }
+  if (msg.confirmBox != undefined) {
+    dialog.find(".modal-footer").html(modalTemplate.buttonConfirm);
+  } else {
+    dialog.find(".modal-footer").html(modalTemplate.button);
+    dialog.find(".btn").html(btnMsg);
+  }
+  
   dialog.find(".modal-body").html(tmsg);
   if (msg.size != undefined) {
     switch (msg.size) {
